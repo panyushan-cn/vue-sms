@@ -1,10 +1,9 @@
 <template>
     <div class="ap">
         <a-carousel autoplay>
-            <div id="ymd"><h3>欢迎来到图书管理系统</h3></div>
-            <div><h3>好书推荐</h3></div>
+            <div id="ymd"><h3>欢迎来到短消息管理系统</h3></div>
             <div><h3>每日一问</h3></div>
-            <div><h3>会员充值（爬）</h3></div>
+            <div><h3>会员充值</h3></div>
         </a-carousel>
     </div>
 </template>
