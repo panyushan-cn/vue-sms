@@ -1,6 +1,6 @@
 <template>
   <el-card class="admin-header">
-    <span style="font-size: 28px;font-weight: bold;position:absolute;left: 10px">图书管理系统后台</span>
+    <span style="font-size: 28px;font-weight: bold;position:absolute;left: 10px">短消息管理系统后台</span>
     <a-button type="primary" v-on:click="backward" style="margin-left: 100px">
       <a-icon type="left" />返回前台
     </a-button>

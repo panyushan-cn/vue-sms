@@ -7,8 +7,8 @@
                 :visible.sync="dialogFormVisible"
                 @close="clear">
             <el-form v-model="form" style="text-align: left" ref="dataForm">
-                <el-form-item label="主题" :label-width="formLabelWidth" prop="title">
-                    <el-input v-model="form.title" autocomplete="off" placeholder="例如：账号消息"></el-input>
+                <el-form-item label="主题" :label-width="formLabelWidth" prop="bookname">
+                    <el-input v-model="form.bookname" autocomplete="off" placeholder="例如：账号消息"></el-input>
                 </el-form-item>
                 <el-form-item label="文本" :label-width="formLabelWidth" prop="author">
                     <el-input type="textarea" :rows="5" v-model="form.author" autocomplete="off"></el-input>
@@ -67,7 +67,7 @@
                 dialogFormVisible: false,
                 form: {
                     id: '',
-                    title: '',
+                    bookname: '',
                     author: '',
                     date: JSON.parse(window.localStorage.getItem('username' || '[]')).username,
                     press:'',
@@ -85,7 +85,7 @@
             clear() {
                 this.form = {
                     id: '',
-                    title: '',
+                    bookname: '',
                     author: '',
                     date:  JSON.parse(window.localStorage.getItem('username' || '[]')).username,
                     press: '',
@@ -103,7 +103,7 @@
                     .post('/admin/content/books', {
                         id: this.form.id,
                         cover: this.form.cover,
-                        title: this.form.title,
+                        bookname: this.form.bookname,
                         author: this.form.author,
                         date: this.form.date,
                         press: this.form.press,

@@ -5,7 +5,7 @@
             <el-popover placement="right" trigger="hover" width="250"
                         v-for="item in books"
                         v-bind:key="item.id">
-                <div>{{item.title}}<br/><br/>{{item.author}} / {{item.date}} /
+                <div>{{item.bookname}}<br/><br/>{{item.author}} / {{item.date}} /
                     {{item.press}}<br/><br/>{{item.abs}}</div>
 
                 <el-card slot="reference" style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
@@ -14,8 +14,8 @@
                         <img :src="item.cover" alt="附件">
                     </div>
                     <div class="info">
-                        <div class="title">
-                            <a href="">{{item.title}}</a>
+                        <div class="bookname">
+                            <a href="">{{item.bookname}}</a>
                         </div>
                         <i class="el-icon-delete" @click="deleteBook(item.id)"></i>
                     </div>
@@ -103,7 +103,7 @@
                 this.$refs.edit.form = {
                     id: item.id,
                     cover: item.cover,
-                    title: item.title,
+                    bookname: item.bookname,
                     author: item.author,
                     date: item.date,
                     press: item.press,
@@ -133,7 +133,7 @@
         /*margin: 0 auto;*/
     }
 
-    .title {
+    .bookname {
         font-size: 14px;
         text-align: left;
     }
