@@ -6,7 +6,7 @@ import Home from "../components/Home.vue";
 import AdminIndex from "@/components/admin/AdminIndex";
 import AppIndex from '@/components/home/AppIndex'
 import Login from '@/components/Login'
-import LibraryIndex from '../components/library/LibraryIndex'
+import LibraryIndex from '../components/message/MessageIndex'
 import wantedlist from '@/views/About'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'

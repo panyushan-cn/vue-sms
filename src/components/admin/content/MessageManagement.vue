@@ -209,7 +209,7 @@
 
     const data = [];
     let obj = {};
-    import ImgUpload from '../../library/ImgUpload'
+    import ImgUpload from '../../message/ImgUpload'
 
     export default {
 
