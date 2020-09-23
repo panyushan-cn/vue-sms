@@ -12,9 +12,9 @@
                 添加短信息
             </a-button>
             <span style="margin-right: 24px"></span>
-            <a-button type="primary" :disabled="!hasSelected" :loading="loading" @click="start">
+           <!-- <a-button type="primary" :disabled="!hasSelected" :loading="loading" @click="start">
                 重置页面
-            </a-button>
+            </a-button>-->
             <span style="margin-left: 8px">
                 <template v-if="hasSelected">
                     {{ `Selected ${selectedRowKeys.length} items` }}
@@ -85,7 +85,7 @@
                 </a-popconfirm>
             </template>
             <template
-                    v-for="col in ['id',  'bookname', 'author', 'date', 'press','category.name']"
+                    v-for="col in ['id',  'theme', 'detail', 'send', 'receive','category.name']"
                     :slot="col"
                     slot-scope="text, record, index"
             >
@@ -122,21 +122,21 @@
                 :visible.sync="dialogFormVisible"
                 @close="clear">
             <el-form v-model="form" style="text-align: left" ref="dataForm">
-                <el-form-item label="主题" :label-width="formLabelWidth" prop="bookname">
-                    <el-input v-model="form.bookname" autocomplete="off" :placeholder="dialogForm_bookname"></el-input>
+                <el-form-item label="主题" :label-width="formLabelWidth" prop="theme">
+                    <el-input v-model="form.theme" autocomplete="off" :placeholder="dialogForm_theme"></el-input>
                 </el-form-item>
-                <el-form-item label="内容" :label-width="formLabelWidth" prop="author">
-                    <el-input v-model="form.author" autocomplete="off" :placeholder="dialogForm_author"></el-input>
+                <el-form-item label="内容" :label-width="formLabelWidth" prop="detail">
+                    <el-input v-model="form.detail" autocomplete="off" :placeholder="dialogForm_detail"></el-input>
                 </el-form-item>
-                <el-form-item label="发件人" :label-width="formLabelWidth" prop="date">
-                    <el-input v-model="form.date" autocomplete="off" :placeholder="dialogForm_date"></el-input>
+                <el-form-item label="发件人" :label-width="formLabelWidth" prop="send">
+                    <el-input v-model="form.send" autocomplete="off" :placeholder="dialogForm_send"></el-input>
                 </el-form-item>
-                <el-form-item label="收件人" :label-width="formLabelWidth" prop="press">
-                    <el-input v-model="form.press" autocomplete="off" :placeholder="dialogForm_press"></el-input>
+                <el-form-item label="收件人" :label-width="formLabelWidth" prop="receive">
+                    <el-input v-model="form.receive" autocomplete="off" :placeholder="dialogForm_receive"></el-input>
                 </el-form-item>
-                <el-form-item label="附件" :label-width="formLabelWidth" prop="cover">
-                    <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
-                    <img-upload @onUpload="uploadImg" ref="imgUpload" :placeholder="dialogForm_cover"></img-upload>
+                <el-form-item label="附件" :label-width="formLabelWidth" prop="attachment">
+                    <el-input v-model="form.attachment" autocomplete="off" placeholder="图片 URL"></el-input>
+                    <img-upload @onUpload="uploadImg" ref="imgUpload" :placeholder="dialogForm_attachment"></img-upload>
                 </el-form-item>
                 <!--<el-form-item label="重要性" :label-width="formLabelWidth" prop="abs">
                     <el-input type="textarea" v-model="form.abs" autocomplete="off" :placeholder="dialogForm_abs" ></el-input>
@@ -173,20 +173,20 @@
                 :visible.sync="dialogFormVisible_add"
                 @close="clear">
             <el-form v-model="form" style="text-align: left" ref="dataForm">
-                <el-form-item label="主题" :label-width="formLabelWidth" prop="bookname">
-                    <el-input v-model="form.bookname" autocomplete="off" placeholder="主题"></el-input>
+                <el-form-item label="主题" :label-width="formLabelWidth" prop="theme">
+                    <el-input v-model="form.theme" autocomplete="off" placeholder="主题"></el-input>
                 </el-form-item>
-                <el-form-item label="内容" :label-width="formLabelWidth" prop="author">
-                    <el-input v-model="form.author" autocomplete="off"></el-input>
+                <el-form-item label="内容" :label-width="formLabelWidth" prop="detail">
+                    <el-input v-model="form.detail" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="发件人" :label-width="formLabelWidth" prop="date">
-                    <el-input v-model="form.date" autocomplete="off"></el-input>
+                <el-form-item label="发件人" :label-width="formLabelWidth" prop="send">
+                    <el-input v-model="form.send" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="收件人" :label-width="formLabelWidth" prop="press">
-                    <el-input v-model="form.press" autocomplete="off"></el-input>
+                <el-form-item label="收件人" :label-width="formLabelWidth" prop="receive">
+                    <el-input v-model="form.receive" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="附件" :label-width="formLabelWidth" prop="cover">
-                    <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+                <el-form-item label="附件" :label-width="formLabelWidth" prop="attachment">
+                    <el-input v-model="form.attachment" autocomplete="off" placeholder="图片 URL"></el-input>
                     <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
                 </el-form-item>
                 <el-form-item label="重要性" :label-width="formLabelWidth" prop="abs">
@@ -235,20 +235,20 @@
                 dialogFormVisible: false,
                 dialogFormVisible_add: false,
                 dialogForm_id:0,
-                dialogForm_cover:'',
-                dialogForm_bookname:'',
-                dialogForm_author:'',
-                dialogForm_date:'',
-                dialogForm_press:'',
+                dialogForm_attachment:'',
+                dialogForm_theme:'',
+                dialogForm_detail:'',
+                dialogForm_send:'',
+                dialogForm_receive:'',
                 dialogForm_abs:'',
                 dialogForm_cid:'',
                 form: {
                     id: '',
-                    bookname: '',
-                    author: '',
-                    date: '',
-                    press: '',
-                    cover: '',
+                    theme: '',
+                    detail: '',
+                    send: '',
+                    receive: '',
+                    attachment: '',
                     abs: '',
                     category: {
                         id: '',
@@ -287,15 +287,15 @@
                     },
                     {
                         title: '主题',
-                        dataIndex: 'bookname',
-                        key: 'bookname',
+                        dataIndex: 'theme',
+                        key: 'theme',
                         scopedSlots: {
                             filterDropdown: 'filterDropdown',
                             filterIcon: 'filterIcon',
-                            customRender: 'bookname',
+                            customRender: 'theme',
                         },
                         onFilter: (value, record) =>
-                            record.bookname
+                            record.theme
                                 .toString()
                                 .toLowerCase()
                                 .includes(value.toLowerCase()),
@@ -309,15 +309,15 @@
                     },
                     {
                         title: '内容',
-                        dataIndex: 'author',
-                        key: 'author',
+                        dataIndex: 'detail',
+                        key: 'detail',
                         scopedSlots: {
                             filterDropdown: 'filterDropdown',
                             filterIcon: 'filterIcon',
-                            customRender: 'author',
+                            customRender: 'detail',
                         },
                         onFilter: (value, record) =>
-                            record.author
+                            record.detail
                                 .toString()
                                 .toLowerCase()
                                 .includes(value.toLowerCase()),
@@ -331,15 +331,15 @@
                     },
                     {
                         title: '发件人',
-                        dataIndex: 'date',
-                        key: 'date',
+                        dataIndex: 'send',
+                        key: 'send',
                         scopedSlots: {
                             filterDropdown: 'filterDropdown',
                             filterIcon: 'filterIcon',
-                            customRender: 'date',
+                            customRender: 'send',
                         },
                         onFilter: (value, record) =>
-                            record.date
+                            record.send
                                 .toString()
                                 .toLowerCase()
                                 .includes(value.toLowerCase()),
@@ -353,15 +353,15 @@
                     },
                     {
                         title: '收件人',
-                        dataIndex: 'press',
-                        key: 'press',
+                        dataIndex: 'receive',
+                        key: 'receive',
                         scopedSlots: {
                             filterDropdown: 'filterDropdown',
                             filterIcon: 'filterIcon',
-                            customRender: 'press',
+                            customRender: 'receive',
                         },
                         onFilter: (value, record) =>
-                            record.press
+                            record.receive
                                 .toString()
                                 .toLowerCase()
                                 .includes(value.toLowerCase()),
@@ -375,15 +375,15 @@
                     },
                     /*{
                       title: '封面',
-                      dataIndex: 'cover',
-                      key: 'cover',
+                      dataIndex: 'attachment',
+                      key: 'attachment',
                       scopedSlots: {
                         filterDropdown: 'filterDropdown',
                         filterIcon: 'filterIcon',
-                        customRender: 'cover',
+                        customRender: 'attachment',
                       },
                       onFilter: (value, record) =>
-                          record.cover
+                          record.attachment
                               .toString()
                               .toLowerCase()
                               .includes(value.toLowerCase()),
@@ -470,11 +470,11 @@
             clear_add() {
                 this.form = {
                     id: '',
-                    bookname: '',
-                    author: '',
-                    date: '',
-                    press: '',
-                    cover: '',
+                    theme: '',
+                    detail: '',
+                    send: '',
+                    receive: '',
+                    attachment: '',
                     abs: '',
                     category: {
                         id: '',
@@ -487,11 +487,11 @@
                 this.$axios
                     .post('/admin/content/books', {
                         id: this.form.id,
-                        cover: this.form.cover,
-                        bookname: this.form.bookname,
-                        author: this.form.author,
-                        date: this.form.date,
-                        press: this.form.press,
+                        attachment: this.form.attachment,
+                        theme: this.form.theme,
+                        detail: this.form.detail,
+                        send: this.form.send,
+                        receive: this.form.receive,
                         abs: this.form.abs,
                         category: this.form.category
                     }).then(resp => {
@@ -514,11 +514,11 @@
             clear() {
                 this.form = {
                     id: '',
-                    bookname: '',
-                    author: '',
-                    date: '',
-                    press: '',
-                    cover: '',
+                    theme: '',
+                    detail: '',
+                    send: '',
+                    receive: '',
+                    attachment: '',
                     abs: '',
                     category: {
                         id: '',
@@ -531,11 +531,11 @@
                 this.$axios
                     .post('/admin/content/books', {
                         id: this.form.id,
-                        cover: this.form.cover,
-                        bookname: this.form.bookname,
-                        author: this.form.author,
-                        date: this.form.date,
-                        press: this.form.press,
+                        attachment: this.form.attachment,
+                        theme: this.form.theme,
+                        detail: this.form.detail,
+                        send: this.form.send,
+                        receive: this.form.receive,
                         abs: this.form.abs,
                         category: this.form.category
                     }).then(resp => {
@@ -555,7 +555,7 @@
                     })
             },
             uploadImg () {
-                this.form.cover = this.$refs.imgUpload.url
+                this.form.attachment = this.$refs.imgUpload.url
             },
 
             listBooks() {
@@ -671,11 +671,11 @@
                 console.log(item)
                 this.dialogFormVisible = true
                 this.dialogForm_id=item.id
-                this.dialogForm_bookname=item.bookname
-                this.dialogForm_author=item.author
-                this.dialogForm_date=item.date
-                this.dialogForm_press=item.press
-                this.dialogForm_cover=item.cover
+                this.dialogForm_theme=item.theme
+                this.dialogForm_detail=item.detail
+                this.dialogForm_send=item.send
+                this.dialogForm_receive=item.receive
+                this.dialogForm_attachment=item.attachment
                 this.dialogForm_abs=item.abs
                 this.dialogForm_cid=item.cid
             }

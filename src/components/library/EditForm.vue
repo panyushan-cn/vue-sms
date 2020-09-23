@@ -7,20 +7,20 @@
                 :visible.sync="dialogFormVisible"
                 @close="clear">
             <el-form v-model="form" style="text-align: left" ref="dataForm">
-                <el-form-item label="主题" :label-width="formLabelWidth" prop="bookname">
-                    <el-input v-model="form.bookname" autocomplete="off" placeholder="例如：账号消息"></el-input>
+                <el-form-item label="主题" :label-width="formLabelWidth" prop="theme">
+                    <el-input v-model="form.theme" autocomplete="off" placeholder="例如：账号消息"></el-input>
                 </el-form-item>
-                <el-form-item label="文本" :label-width="formLabelWidth" prop="author">
-                    <el-input type="textarea" :rows="5" v-model="form.author" autocomplete="off"></el-input>
+                <el-form-item label="文本" :label-width="formLabelWidth" prop="detail">
+                    <el-input type="textarea" :rows="5" v-model="form.detail" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="发件人" :label-width="formLabelWidth" prop="date">
-                    <el-input v-model="form.date" autocomplete="off"></el-input>
+                <el-form-item label="发件人" :label-width="formLabelWidth" prop="send">
+                    <el-input v-model="form.send" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="收件人" :label-width="formLabelWidth" prop="press">
-                    <el-input v-model="form.press" autocomplete="off"></el-input>
+                <el-form-item label="收件人" :label-width="formLabelWidth" prop="receive">
+                    <el-input v-model="form.receive" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="附件" :label-width="formLabelWidth" prop="cover">
-                    <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+                <el-form-item label="附件" :label-width="formLabelWidth" prop="attachment">
+                    <el-input v-model="form.attachment" autocomplete="off" placeholder="图片 URL"></el-input>
                     <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
                 </el-form-item>
 
@@ -67,11 +67,11 @@
                 dialogFormVisible: false,
                 form: {
                     id: '',
-                    bookname: '',
-                    author: '',
-                    date: JSON.parse(window.localStorage.getItem('username' || '[]')).username,
-                    press:'',
-                    cover: '',
+                    theme: '',
+                    detail: '',
+                    send: JSON.parse(window.localStorage.getItem('username' || '[]')).username,
+                    receive:'',
+                    attachment: '',
                     abs: '',
                     category: {
                         id: '3',
@@ -85,11 +85,11 @@
             clear() {
                 this.form = {
                     id: '',
-                    bookname: '',
-                    author: '',
-                    date:  JSON.parse(window.localStorage.getItem('username' || '[]')).username,
-                    press: '',
-                    cover: '',
+                    theme: '',
+                    detail: '',
+                    send:  JSON.parse(window.localStorage.getItem('username' || '[]')).username,
+                    receive: '',
+                    attachment: '',
                     abs: '',
                     category: {
                         id: '3',
@@ -102,11 +102,11 @@
                 this.$axios
                     .post('/admin/content/books', {
                         id: this.form.id,
-                        cover: this.form.cover,
-                        bookname: this.form.bookname,
-                        author: this.form.author,
-                        date: this.form.date,
-                        press: this.form.press,
+                        attachment: this.form.attachment,
+                        theme: this.form.theme,
+                        detail: this.form.detail,
+                        send: this.form.send,
+                        receive: this.form.receive,
                         abs: this.form.abs,
                         category: this.form.category
                     }).then(resp => {
@@ -118,7 +118,7 @@
                 })
             },
             uploadImg () {
-                this.form.cover = this.$refs.imgUpload.url
+                this.form.attachment = this.$refs.imgUpload.url
             }
 
         }

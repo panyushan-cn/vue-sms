@@ -5,21 +5,21 @@
             <el-popover placement="right" trigger="hover" width="250"
                         v-for="item in books"
                         v-bind:key="item.id">
-                <div>{{item.bookname}}<br/><br/>{{item.author}} / {{item.date}} /
-                    {{item.press}}<br/><br/>{{item.abs}}</div>
+                <div>{{item.theme}}<br/><br/>{{item.detail}} / {{item.send}} /
+                    {{item.receive}}<br/><br/>{{item.abs}}</div>
 
                 <el-card slot="reference" style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                          body-style="padding:10px" shadow="hover">
-                    <div class="cover" @click="editBook(item)">
-                        <img :src="item.cover" alt="附件">
+                    <div class="attachment" @click="editBook(item)">
+                        <img :src="item.attachment" alt="附件">
                     </div>
                     <div class="info">
-                        <div class="bookname">
-                            <a href="">{{item.bookname}}</a>
+                        <div class="theme">
+                            <a href="">{{item.theme}}</a>
                         </div>
                         <i class="el-icon-delete" @click="deleteBook(item.id)"></i>
                     </div>
-                    <div class="author">{{item.author}}/<br/>发件人：{{item.date}}</div>
+                    <div class="detail">{{item.detail}}/<br/>发件人：{{item.send}}</div>
                 </el-card>
             </el-popover>
             <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
@@ -53,9 +53,9 @@
         methods: {
             loadBooks () {
                 let _this = this;
-                //let press='潘玉山';
-                let press=JSON.parse(window.localStorage.getItem('username' || '[]')).username;
-                let url = 'press/' + press + '/books';
+                //let receive='潘玉山';
+                let receive=JSON.parse(window.localStorage.getItem('username' || '[]')).username;
+                let url = 'receive/' + receive + '/books';
                 this.$axios.get(url).then(resp => {
                     if (resp && resp.status === 200) {
                         _this.books = resp.data
@@ -102,11 +102,11 @@
                 this.$refs.edit.dialogFormVisible = true
                 this.$refs.edit.form = {
                     id: item.id,
-                    cover: item.cover,
-                    bookname: item.bookname,
-                    author: item.author,
-                    date: item.date,
-                    press: item.press,
+                    attachment: item.attachment,
+                    theme: item.theme,
+                    detail: item.detail,
+                    send: item.send,
+                    receive: item.receive,
                     abs: item.abs,
                     category: {
                         id: item.category.id.toString(),
@@ -119,7 +119,7 @@
 </script>
 
 <style scoped>
-    .cover {
+    .attachment {
         width: 115px;
         height: 122px;
         margin-bottom: 7px;
@@ -133,12 +133,12 @@
         /*margin: 0 auto;*/
     }
 
-    .bookname {
+    .theme {
         font-size: 14px;
         text-align: left;
     }
 
-    .author {
+    .detail {
         color: #333;
         width: 102px;
         font-size: 13px;
