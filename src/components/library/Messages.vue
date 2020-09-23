@@ -3,7 +3,7 @@
         <el-row style="height: 840px;">
             <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
             <el-popover placement="right" trigger="hover" width="250"
-                        v-for="item in books"
+                        v-for="item in messages"
                         v-bind:key="item.id">
                 <div>{{item.theme}}<br/><br/>{{item.detail}} / {{item.send}} /
                     {{item.receive}}<br/><br/>{{item.abs}}</div>
@@ -22,14 +22,14 @@
                     <div class="detail">{{item.detail}}/<br/>发件人：{{item.send}}</div>
                 </el-card>
             </el-popover>
-            <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
+            <edit-form @onSubmit="loadMessages()" ref="edit"></edit-form>
         </el-row>
         <el-row>
             <el-pagination
                     @current-change="handleCurrentChange"
-                    :current-page="books.currentPage"
-                    :page-size="books.pagesize"
-                    :total="books.length">
+                    :current-page="messages.currentPage"
+                    :page-size="messages.pagesize"
+                    :total="messages.length">
             </el-pagination>
         </el-row>
     </div>
@@ -40,25 +40,25 @@
     import SearchBar from './SearchBar'
 
     export default {
-        name: 'Books',
+        name: 'Messages',
         components: {EditForm, SearchBar},
         data () {
             return {
-                books: [],
+                messages: [],
             }
         },
         mounted: function () {
-            this.loadBooks()
+            this.loadMessages()
         },
         methods: {
-            loadBooks () {
+            loadMessages () {
                 let _this = this;
                 //let receive='潘玉山';
                 let receive=JSON.parse(window.localStorage.getItem('username' || '[]')).username;
-                let url = 'receive/' + receive + '/books';
+                let url = 'receive/' + receive + '/messages';
                 this.$axios.get(url).then(resp => {
                     if (resp && resp.status === 200) {
-                        _this.books = resp.data
+                        _this.messages = resp.data
                         _this.currentPage = 1
                     }
                 })
@@ -73,7 +73,7 @@
                     .get('/search?keywords=' + this.$refs.searchBar.keywords, {
                     }).then(resp => {
                     if (resp && resp.status === 200) {
-                        _this.books = resp.data
+                        _this.messages = resp.data
                     }
                 })
             },
@@ -84,9 +84,9 @@
                     type: 'warning'
                 }).then(() => {
                         this.$axios
-                            .post('/admin/content/books/delete', {id: id}).then(resp => {
+                            .post('/admin/content/messages/delete', {id: id}).then(resp => {
                             if (resp && resp.status === 200) {
-                                this.loadBooks()
+                                this.loadMessages()
                             }
                         })
                     }

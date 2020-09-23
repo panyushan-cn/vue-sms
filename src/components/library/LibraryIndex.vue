@@ -5,33 +5,33 @@
             <SideMenu @indexSelect="listByCategory" ref="sideMenu"></SideMenu>
         </el-aside>
         <el-main>
-            <Books class="books-area" ref="booksArea"></Books>
+            <Messages class="messages-area" ref="messagesArea"></Messages>
         </el-main>
     </el-container>
 </template>
 
 <script>
     import SideMenu from './SideMenu'
-    import Books from './Books'
+    import Messages from './Messages'
     export default {
         name: 'LibraryIndex',
-        components: {SideMenu,Books},
+        components: {SideMenu,Messages},
         methods: {
             listByCategory () {
                 let _this = this;
                 let cid = this.$refs.sideMenu.cid;
                 let press=JSON.parse(window.localStorage.getItem('username' || '[]')).username;
-                let url = 'categories/' + cid +'/books/'+ press;
-                let url1 = 'categories/' + cid +'/books1/'+ press;
-                let url2 = 'categories/' + cid +'/books2/'+ press;
-                let url3 = 'categories/' + cid +'/books3/'+ press;
-                let url4 = 'categories/' + cid +'/books4/'+ press;
+                let url = 'categories/' + cid +'/messages/'+ press;
+                let url1 = 'categories/' + cid +'/messages1/'+ press;
+                let url2 = 'categories/' + cid +'/messages2/'+ press;
+                let url3 = 'categories/' + cid +'/messages3/'+ press;
+                let url4 = 'categories/' + cid +'/messages4/'+ press;
                 if(cid == 1){
                     console.log("1")
                     this.$axios.get(url1).then(resp => {
                         if (resp && resp.status === 200) {
-                            _this.$refs.booksArea.books = resp.data
-                            _this.$refs.booksArea.currentPage = 1
+                            _this.$refs.messagesArea.messages = resp.data
+                            _this.$refs.messagesArea.currentPage = 1
                         }
                     })
                 }
@@ -39,8 +39,8 @@
                     console.log("2")
                     this.$axios.get(url2).then(resp => {
                         if (resp && resp.status === 200) {
-                            _this.$refs.booksArea.books = resp.data
-                            _this.$refs.booksArea.currentPage = 1
+                            _this.$refs.messagesArea.messages = resp.data
+                            _this.$refs.messagesArea.currentPage = 1
                         }
                     })
                 }
@@ -48,8 +48,8 @@
                     console.log("3")
                     this.$axios.get(url3).then(resp => {
                         if (resp && resp.status === 200) {
-                            _this.$refs.booksArea.books = resp.data
-                            _this.$refs.booksArea.currentPage = 1
+                            _this.$refs.messagesArea.messages = resp.data
+                            _this.$refs.messagesArea.currentPage = 1
                         }
                     })
                 }
@@ -57,8 +57,8 @@
                     console.log("4")
                     this.$axios.get(url4).then(resp => {
                         if (resp && resp.status === 200) {
-                            _this.$refs.booksArea.books = resp.data
-                            _this.$refs.booksArea.currentPage = 1
+                            _this.$refs.messagesArea.messages = resp.data
+                            _this.$refs.messagesArea.currentPage = 1
                         }
                     })
                 }
@@ -66,8 +66,8 @@
                     console.log("else")
                     this.$axios.get(url).then(resp => {
                         if (resp && resp.status === 200) {
-                            _this.$refs.booksArea.books = resp.data
-                            _this.$refs.booksArea.currentPage = 1
+                            _this.$refs.messagesArea.messages = resp.data
+                            _this.$refs.messagesArea.currentPage = 1
                         }
                     })
                 }
@@ -78,7 +78,7 @@
 </script>
 
 <style scoped>
-    .books-area {
+    .messages-area {
         width: 990px;
         margin-left: auto;
         margin-right: auto;

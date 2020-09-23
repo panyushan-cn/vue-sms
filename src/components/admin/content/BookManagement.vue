@@ -403,7 +403,7 @@
             },
         },
         mounted () {
-            this.listBooks()
+            this.listMessages()
         },
         methods: {
 
@@ -428,7 +428,7 @@
             },
             onSubmit_add() {
                 this.$axios
-                    .post('/admin/content/books', {
+                    .post('/admin/content/messages', {
                         id: this.form.id,
                         attachment: this.form.attachment,
                         theme: this.form.theme,
@@ -441,7 +441,7 @@
                     if (resp && resp.status === 200) {
                         this.dialogFormVisible_add = false
                         this.$emit('onSubmit_add')
-                        this.listBooks()
+                        this.listMessages()
                         this.$message.success('添加成功')
                     } else {
                         console.log(resp.status)
@@ -472,7 +472,7 @@
             },
             onSubmit() {
                 this.$axios
-                    .post('/admin/content/books', {
+                    .post('/admin/content/messages', {
                         id: this.form.id,
                         attachment: this.form.attachment,
                         theme: this.form.theme,
@@ -486,7 +486,7 @@
                         console.log(resp.status)
                         this.dialogFormVisible = false
                         this.$emit('onSubmit')
-                        this.listBooks()
+                        this.listMessages()
                         this.$message.success('修改成功')
                     } else {
                         console.log(resp.status)
@@ -501,9 +501,9 @@
                 this.form.attachment = this.$refs.imgUpload.url
             },
 
-            listBooks() {
+            listMessages() {
                 let _this = this
-                this.$axios.get('/books').then(resp => {
+                this.$axios.get('/messages').then(resp => {
                     if (resp && resp.status === 200) {
                         console.log( + resp.data)
                         _this.data = resp.data
@@ -528,9 +528,9 @@
                 let _this = this
                 const data = [...this.data];
                 this.data = data.filter(item => item.id !== id);
-                this.$axios.post('/admin/content/books/delete', {id: id}).then(resp=>{
+                this.$axios.post('/admin/content/messages/delete', {id: id}).then(resp=>{
                     if (resp && resp.status === 200) {
-                        this.listBooks()
+                        this.listMessages()
                     }
                 })
             },

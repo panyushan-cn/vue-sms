@@ -94,7 +94,7 @@
             },
             onSubmit() {
                 this.$axios
-                    .post('/admin/content/books', {
+                    .post('/admin/content/messages', {
                         id: this.form.id,
                         attachment: this.form.attachment,
                         theme: this.form.theme,
