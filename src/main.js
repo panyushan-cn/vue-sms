@@ -23,6 +23,12 @@ Vue.config.productionTip = false;
 
 Vue.use(ElementUi)
 
+Vue.directive('title', {
+    inserted: function (el, binding) {
+        document.title = el.dataset.title
+    }
+})
+
 const formatRoutes = (routes) => {
     let fmtRoutes = []
     if (routes) {

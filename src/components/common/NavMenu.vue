@@ -25,8 +25,8 @@
             return {
                 navList: [
                     {name: '/index', navItem: '首页'},
-                    {name: '/wantedlist', navItem: '通讯录'},
-                    {name: '/library', navItem: '消息中心'},
+                    {name: '/contact', navItem: '通讯录'},
+                    {name: '/message', navItem: '消息中心'},
                     {name: '/admin', navItem: '个人中心'}
                 ],
                 activeIndex: "",

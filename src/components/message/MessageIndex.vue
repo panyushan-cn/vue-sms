@@ -14,7 +14,7 @@
     import SideMenu from './SideMenu'
     import Messages from './Messages'
     export default {
-        name: 'LibraryIndex',
+        name: 'MessageIndex',
         components: {SideMenu,Messages},
         methods: {
             listByCategory () {

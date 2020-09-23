@@ -6,8 +6,8 @@ import Home from "../components/Home.vue";
 import AdminIndex from "@/components/admin/AdminIndex";
 import AppIndex from '@/components/home/AppIndex'
 import Login from '@/components/Login'
-import LibraryIndex from '../components/message/MessageIndex'
-import wantedlist from '@/views/About'
+import MessageIndex from '../components/message/MessageIndex'
+import contact from '@/views/About'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -18,7 +18,6 @@ const routes = [
     {
         path: "/home",
         name: "Home",
-        //redirect: './home',
         component: Home,
         redirect: '/index',
         children: [
@@ -31,17 +30,17 @@ const routes = [
                 }
             },
             {
-                path: '/library',
-                name: 'LibraryIndex',
-                component: LibraryIndex,
+                path: '/message',
+                name: 'MessageIndex',
+                component: MessageIndex,
                 meta: {
                     requireAuth: true
                 }
             },
             {
-                path: '/wantedlist',
-                name: 'wantedlist',
-                component: wantedlist,
+                path: '/contact',
+                name: 'contact',
+                component: contact,
                 meta: {
                     requireAuth: true
                 }
@@ -69,9 +68,6 @@ const routes = [
     {
         path: "/about",
         name: "About",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
             import(/* webpackChunkName: "about" */ "../views/About.vue")
     },
@@ -101,7 +97,6 @@ export const createRouter = routes => new Router(
     {
         path: "/home",
         name: "Home",
-        //redirect: './home',
         component: Home,
         redirect: '/index',
         children: [
@@ -114,17 +109,17 @@ export const createRouter = routes => new Router(
                 }
             },
             {
-                path: '/library',
-                name: 'LibraryIndex',
-                component: LibraryIndex,
+                path: '/message',
+                name: 'MessageIndex',
+                component: MessageIndex,
                 meta: {
                     requireAuth: true
                 }
             },
             {
-                path: '/wantedlist',
+                path: '/contact',
                 name: 'wantedlist',
-                component: wantedlist,
+                component: contact,
                 meta: {
                     requireAuth: true
                 }
@@ -152,9 +147,6 @@ export const createRouter = routes => new Router(
     {
         path: "/about",
         name: "About",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
             import(/* webpackChunkName: "about" */ "../views/About.vue")
     },
