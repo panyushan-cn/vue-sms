@@ -138,9 +138,6 @@
                     <el-input v-model="form.attachment" autocomplete="off" placeholder="图片 URL"></el-input>
                     <img-upload @onUpload="uploadImg" ref="imgUpload" :placeholder="dialogForm_attachment"></img-upload>
                 </el-form-item>
-                <!--<el-form-item label="重要性" :label-width="formLabelWidth" prop="abs">
-                    <el-input type="textarea" v-model="form.abs" autocomplete="off" :placeholder="dialogForm_abs" ></el-input>
-                </el-form-item>-->
                 <el-form-item label="重要性" :label-width="formLabelWidth" prop="abs">
                     <el-select v-model="form.abs" placeholder="请选择分类" >
                         <el-option label="紧急" value="紧急"></el-option>
@@ -154,13 +151,8 @@
                         <el-option label="未读" value="2"></el-option>
                         <el-option label="已发送" value="3"></el-option>
                         <el-option label="草稿箱" value="4"></el-option>
-                        <!--<el-option label="经管" value="5"></el-option>
-                        <el-option label="科技" value="6"></el-option>-->
                     </el-select>
                 </el-form-item>
-                <!--                <el-form-item label="状态" :label-width="formLabelWidth" prop="enabled">-->
-                <!--                    <el-input v-model="form.enabled" autocomplete="off"></el-input>-->
-                <!--                </el-form-item>-->
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -202,13 +194,8 @@
                         <el-option label="未读" value="2"></el-option>
                         <el-option label="已发送" value="3"></el-option>
                         <el-option label="草稿箱" value="4"></el-option>
-                       <!-- <el-option label="经管" value="5"></el-option>
-                        <el-option label="科技" value="6"></el-option>-->
                     </el-select>
                 </el-form-item>
-                <!--                <el-form-item prop="id" style="height: 0">-->
-                <!--                    <el-input type="hidden" v-model="form.id" autocomplete="off"></el-input>-->
-                <!--                </el-form-item>-->
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible_add = false">取 消</el-button>
@@ -373,50 +360,6 @@
                             }
                         },
                     },
-                    /*{
-                      title: '封面',
-                      dataIndex: 'attachment',
-                      key: 'attachment',
-                      scopedSlots: {
-                        filterDropdown: 'filterDropdown',
-                        filterIcon: 'filterIcon',
-                        customRender: 'attachment',
-                      },
-                      onFilter: (value, record) =>
-                          record.attachment
-                              .toString()
-                              .toLowerCase()
-                              .includes(value.toLowerCase()),
-                      onFilterDropdownVisibleChange: visible => {
-                        if (visible) {
-                          setTimeout(() => {
-                            this.searchInput.focus();
-                          });
-                        }
-                      },
-                    },
-                    {
-                      title: '简述',
-                      dataIndex: 'abs',
-                      key: 'abs',
-                      scopedSlots: {
-                        filterDropdown: 'filterDropdown',
-                        filterIcon: 'filterIcon',
-                        customRender: 'abs',
-                      },
-                      onFilter: (value, record) =>
-                          record.abs
-                              .toString()
-                              .toLowerCase()
-                              .includes(value.toLowerCase()),
-                      onFilterDropdownVisibleChange: visible => {
-                        if (visible) {
-                          setTimeout(() => {
-                            this.searchInput.focus();
-                          });
-                        }
-                      },
-                    },*/
                     {
                         title: '状态  ',
                         dataIndex: 'category.name',

@@ -1,9 +1,9 @@
-# lms-vue 
+# vue-sms
 
-# 后端地址
+# 后端地址sms
 https://github.com/panyushan-cn/sms
 
-## IDEA 2020.2.1开发
+## IDEA 2020.1.4开发
 
 ## 运行前准备
 第一次运行项目时请先使用<code>npm run build</code>命令执行一次，

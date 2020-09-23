@@ -24,14 +24,6 @@
             <i class="el-icon-menu"></i>
             <span slot="title">草稿箱</span>
         </el-menu-item>
-        <!--<el-menu-item index="5">
-            <i class="el-icon-menu"></i>
-            <span slot="title">经管</span>
-        </el-menu-item>
-        <el-menu-item index="6">
-            <i class="el-icon-menu"></i>
-            <span slot="title">科技</span>
-        </el-menu-item>-->
     </el-menu>
 </template>
 

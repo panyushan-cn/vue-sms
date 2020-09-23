@@ -23,10 +23,6 @@
                     <el-input v-model="form.attachment" autocomplete="off" placeholder="图片 URL"></el-input>
                     <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
                 </el-form-item>
-
-                <!-- <el-form-item label="重要性" :label-width="formLabelWidth" prop="abs">
-                     <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
-                 </el-form-item>-->
                 <el-form-item label="重要性" :label-width="formLabelWidth" prop="abs">
                     <el-select v-model="form.abs" placeholder="请选择分类" >
                         <el-option label="紧急" value="紧急"></el-option>
@@ -41,8 +37,6 @@
                         <el-option label="未读" value="2"></el-option>
                         <el-option label="已发送" value="3" ></el-option>
                         <el-option label="保存到草稿" value="4"></el-option>
-                        <!--                        <el-option label="经管" value="5"></el-option>-->
-                        <!--                        <el-option label="科技" value="6"></el-option>-->
                     </el-select>
                 </el-form-item>
                 <el-form-item prop="id" style="height: 0">
