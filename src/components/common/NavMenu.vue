@@ -36,7 +36,7 @@
         },
         methods: {
             clickDialog() {
-                this.$message.info("孟老弟牛逼")
+                this.$message.info("不要在点啦！做不动啦")
             },
             logout () {
                 let _this = this;
