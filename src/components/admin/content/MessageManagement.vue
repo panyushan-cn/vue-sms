@@ -118,7 +118,7 @@
         </a-table>
 
         <el-dialog
-                title="修改图书"
+                title="修改信息"
                 :visible.sync="dialogFormVisible"
                 @close="clear">
             <el-form v-model="form" style="text-align: left" ref="dataForm">
