@@ -592,7 +592,7 @@
                 })
                     .then(resp => {
                         if (resp && resp.data.code === 200) {
-                            this.$alert('书籍信息修改成功')
+                            this.$alert('消息修改成功')
                             // 修改角色后重新请求用户信息，实现视图更新
                             this.listUsers()
                         } else {

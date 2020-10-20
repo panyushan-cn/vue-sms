@@ -1,14 +1,13 @@
 <template>
     <div class="ap">
-        <div id="mission"><p class="mission">使命</p>
+        <div id="mission"><p class="mission">主题</p>
             <p class="desc">
-                Inspire creativity, enrich life.
+                短消息管理系统  课程设计
             </p>
         </div>
         <a-carousel autoplay>
-            <div id="ymd"><h3>欢迎来到短消息管理系统</h3></div>
-            <div><h3>每日一问</h3></div>
-            <div><h3>会员充值</h3></div>
+            <div id="ymd"><h3>欢迎来到短消息管理系统</h3>
+            </div>
         </a-carousel>
     </div>
 </template>
@@ -29,7 +28,7 @@
         text-align: center;
         height: 100%;
         line-height: 650px;
-        background: #7c64ff;
+        background: #6fa8dc;
         overflow: hidden;
     }
 

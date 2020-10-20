@@ -5,8 +5,8 @@
             <el-popover placement="right" trigger="hover" width="250"
                         v-for="item in messages"
                         v-bind:key="item.id">
-                <div>{{item.theme}}<br/><br/>{{item.detail}} / {{item.send}} /
-                    {{item.receive}}<br/><br/>{{item.abs}}</div>
+                <div>主题：{{item.theme}}<br/><br/>详细信息：{{item.detail}} <br/>发件人：{{item.send}}<br/>
+                    收件人：{{item.receive}}<br/><br/>状态：{{item.abs}}</div>
 
                 <el-card slot="reference" style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                          body-style="padding:10px" shadow="hover">
@@ -15,11 +15,11 @@
                     </div>
                     <div class="info">
                         <div class="theme">
-                            <a href="">{{item.theme}}</a>
+                            <a href="">主题：{{item.theme}}</a>
                         </div>
                         <i class="el-icon-delete" @click="deleteBook(item.id)"></i>
                     </div>
-                    <div class="detail">{{item.detail}}/<br/>发件人：{{item.send}}</div>
+                    <div class="detail">详细信息：{{item.detail}}/<br/>发件人：{{item.send}}</div>
                 </el-card>
             </el-popover>
             <edit-form @onSubmit="loadMessages()" ref="edit"></edit-form>
@@ -78,7 +78,7 @@
                 })
             },
             deleteBook (id) {
-                this.$alert('此操作将永久删除该书籍, 是否继续?', '提示', {
+                this.$alert('此操作将永久删除该消息 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
